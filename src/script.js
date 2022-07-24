@@ -1,5 +1,6 @@
-// index.html을 열어서 agoraStatesDiscussions 배열 요소를 확인하세요.
-console.log(agoraStatesDiscussions);
+const { agoraStatesDiscussions } = require('./data.js')
+require('./style.css')
+
 let data;
 const dataFromLocalStorage = localStorage.getItem("agoraStatesDiscussions");
 if (dataFromLocalStorage) {
@@ -111,14 +112,11 @@ buttons.children[2].addEventListener("click", () => {
 });
 
 // 문서의 내용을 확인해야 합니다.
-const form = document.querySelector("form.form");
-const author = form.querySelector("div.form__input--name > input");
-const title = form.querySelector("div.form__input--title > input");
-const textbox = form.querySelector("div.form__textbox > textarea");
-
-// 문서를 제출해야 합니다.
-form.addEventListener("submit", (event) => {
+const addDiscussion = (event) => {
   event.preventDefault();
+  const author = form.querySelector("div.form__input--name > input");
+  const title = form.querySelector("div.form__input--title > input");
+  const textbox = form.querySelector("div.form__textbox > textarea");
   const obj = {
     id: "unique id",
     createdAt: new Date().toISOString(),
@@ -137,4 +135,8 @@ form.addEventListener("submit", (event) => {
 
   // 렌더링
   render(ul, 0, limit);
-});
+}
+
+const form = document.querySelector("form.form");
+// 문서를 제출해야 합니다.
+form.addEventListener("submit", addDiscussion);
