@@ -7,7 +7,7 @@ module.exports = {
   target: ["web", "es5"],
   entry: "./src/script.js",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "docs"),
     filename: "app.bundle.js",
     clean: true
   },
